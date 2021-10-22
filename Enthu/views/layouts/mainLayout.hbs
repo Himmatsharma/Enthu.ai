@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/duotone.css" integrity="sha384-R3QzTxyukP03CMqKFe0ssp5wUvBPEyy9ZspCB+Y01fEjhMwcXixTyeot+S40+AjZ" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+    </script>
+</head>
+        
+<body class="bg-info" style="background-color: aquamarine;">
+    <div class="row">
+        <div class="col-md-6 offset-md-3" style="text-align: center;">
+            <div class="container-fluid">
+                {{{body}}}
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+$('#empgetdata').click(function () {
+
+    var user_id = $('#user_id').val();
+    var urls = "http://localhost:3000/update/"+user_id;
+    $.ajax({
+        url:urls,
+        method:'GET',
+        dataType:'JSON',
+        success:function(response){
+            if(response.success == true){
+                
+                $('.fullName').html(response.docs.fullName);
+                $('.email').html(rresponse.docs.email);
+                $('.mobile').html(response.docs.mobile);
+                $('.city').html(response.docs.city);
+            }
+        },
+        error:function(response){  
+			toastr.error('server error');
+	    }
+    })
+}
+</script>
+
+</html>

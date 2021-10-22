@@ -1,0 +1,147 @@
+<section>
+    <button type="button" class="btn btn-primary" style="margin-top:40px" data-toggle="modal"
+        data-target="#exampleModalCenter">
+        Add New
+    </button>
+
+    <h3>Employee List</h3>
+</section>
+
+<table class="table table-dark">
+    <thead class="thead-dark">
+        <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>City</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+        <tr>
+            <td>{{this.fullName}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.mobile}}</td>
+            <td>{{this.city}}</td>
+            <td>
+                <a href="/update/{{this._id}}" id="empgetdata" data-toggle="modal" data-target="#exampleModalCentere"><i class="fas fa-user-edit">&nbsp &nbsp</i></a>
+                <a href="/delete/{{this._id}}"><i class="fas fa-trash-alt"></i></a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+
+<!-- Modal add-->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLongTitle">Add Employee</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/add" method="POST" autocomplete="off">
+
+                    <div class="form-group">
+
+                        <label for="fullName">Full Name:</label>
+
+                        <input type="text" class="" id="fullName" placeholder="Enter Full Name" name="fullName">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="email">Email:</label>
+
+                        <input type="email" id="email" placeholder="Enter email" name="email">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="mobile">Mobile:</label>
+
+                        <input type="text" class="" id="mobile" placeholder="Enter Mobile" name="mobile">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="city">City:</label>
+
+                        <input type="text" class="" id="city" placeholder="Enter City" name="city">
+
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal edit-->
+<div class="modal fade" id="exampleModalCentere" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLongTitle">Update</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/update" method="POST" autocomplete="off">
+
+                    <div class="form-group">
+
+                        <label for="fullName">Full Name:</label>
+
+                        <input type="text" class="fullName"  id="fullName" placeholder="Enter Full Name"
+                            value="{{list.fullName}}" name="fullName">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="email">Email:</label>
+
+                        <input type="email" class="email" id="email" placeholder="Enter email" value="{{list.email}}" name="email">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="mobile">Mobile:</label>
+
+                        <input type="text" class="mobile" id="mobile" placeholder="Enter Mobile" value="{{list.mobile}}"
+                            name="mobile">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="city">City:</label>
+
+                        <input type="text" class="city" id="city" placeholder="Enter City" value="{{list.city}}"
+                            name="city">
+
+                    </div>
+
+                    <input type="hidden" class="" id="fullName" placeholder="Enter Full Name" value="{{list._id}}"
+                        name="id">
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
