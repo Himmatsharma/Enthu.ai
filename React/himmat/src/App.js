@@ -1,12 +1,15 @@
+import Todo from './components/Todo';
+
 function App() {
   return (
     <div>
-      <h1>Himmat</h1>
-      <div className="card">
-        <div className="actions">
-          <button className="btn">Click Here</button>
-        </div>
-      </div>
+      <h3>Hello</h3>
+      <Todo text="text 1" />
+      <Todo text="text 2" />
+      <Todo text="text 3" />
+      {/* <button onClick = {deleteHandler}>Model</button> */}
+      {/* <Modal/> */}
+      {/* <Backdrop /> */}
     </div>
   );
 }
