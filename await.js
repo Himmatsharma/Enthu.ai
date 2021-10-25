@@ -16,7 +16,9 @@ const delayedColor = (color, delay) => {
 // .then(() => delayedColor('black', 1000))
 // .then(() => delayedColor('brown', 1000))
 
-async function color(){
+async function color(g,j,l){
+
+    `hello ${g}`
     await delayedColor('pink', 1000)
     await delayedColor('yellow', 1000)
     await delayedColor('brown', 1000)
